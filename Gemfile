@@ -57,10 +57,13 @@ gem 'ruby-vips', '~> 2.0', '>= 2.0.7'
 gem 'sitemap_generator'
 gem 'mautic', '~> 2.3'
 
+# added to address vulnerability
+gem "websocket-extensions", ">= 0.1.5"
+
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'rspec-rails', '~> 4.0.0.beta3' # TODO update rspec-rails gem
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_bot_rails'
   gem 'rb-fsevent', require: false
   gem 'faker'
