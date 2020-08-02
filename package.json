@@ -2,7 +2,6 @@
   "name": "launchmuse",
   "private": true,
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rails/ujs": "^6.0.3",
     "@rails/webpacker": "^5.1.0",
     "@simonwep/pickr": "^1.7.1",
@@ -21,6 +20,7 @@
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.0",
     "core-js": "3.6.5",
+    "elliptic": "^6.5.3",
     "eva-icons": "^1.1.1",
     "gridstack": "^1.2.0",
     "jquery": "^3.5.1",
