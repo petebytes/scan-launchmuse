@@ -18,8 +18,8 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows doe
 
 # Added Gems
 gem "ahoy_matey"
-gem "aws-sdk-s3", "~> 1.75.0"
-gem "aws-sdk-core", "~> 3.104.3"
+gem "aws-sdk-s3"
+gem "aws-sdk-core", "3.103.0"
 gem "chartkick"
 gem "blazer"
 gem "delayed_job_active_record"
