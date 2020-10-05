@@ -43,7 +43,7 @@ gem "split", require: "split/dashboard" # A/B or Split testing
 gem "stripe", "~> 5.11"
 gem "stripe_event", "~> 2.3" # Handles Stripe webhook endpoints
 gem "twitter"
-gem "shrine", "~> 3.2"
+gem "shrine", "~> 3.3"
 gem "uppy-s3_multipart", ">= 0.3.2"
 gem "marcel" # Find the mime type of files, examining file, filename and declared type
 gem "fastimage" # finds the size or type of an image given its uri
