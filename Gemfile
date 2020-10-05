@@ -4,12 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.7.1"
 
 # Default Gems
-gem "rails", "~> 6.0.3.2" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "rails", "~> 6.0.3.3" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
-gem "puma", "~> 4.3.5" # Use Puma as the app server
+gem "puma", "~> 5.0.0" # Use Puma as the app server
 # But sass-rails 5 generates deprecation warnings. It is wrapper over sassc-rails, so change dependency to gem 'sassc-rails', '~> 2.0'
 gem "sassc-rails", "~> 2.0"
-gem "webpacker", "~> 5.1"
+gem "webpacker", "~> 5.2.1"
 gem "turbolinks", "~> 5" # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "jbuilder", "~> 2.9"
 gem "bootsnap", ">= 1.4.5", require: false # Reduces boot times through caching; required in config/boot.rb
@@ -19,11 +19,10 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows doe
 # Added Gems
 gem "ahoy_matey"
 gem "aws-sdk-s3"
-gem "aws-sdk-core", "3.103.0"
 gem "chartkick"
 gem "blazer"
 gem "delayed_job_active_record"
-gem "devise"
+gem "devise", "~> 4.7"
 gem "devise-two-factor"
 gem "devise_invitable", "~> 2.0.1"
 gem "groupdate"
@@ -55,12 +54,15 @@ gem "friendly_id", "~> 5.3"
 gem "streamio-ffmpeg", "~> 3.0", ">= 3.0.2" # for video transcoding and screenshot
 gem "ruby-vips", "~> 2.0", ">= 2.0.7"
 gem "sitemap_generator"
-gem "mautic", "~> 2.3", git: "https://github.com/petebytes/mautic-rails.git"
+gem "mautic", "~> 2.3"
 gem "dotenv-rails", "~> 2.7.6"
-gem 'lockbox'
+gem "lockbox"
+gem "stimulus_reflex", "~> 3.3.0"
 
 # added to address vulnerability
 gem "websocket-extensions", ">= 0.1.5"
+# mitigation against CVE-2015-9284
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -70,34 +72,35 @@ group :development, :test do
   gem "faker"
   gem "foreman"
   gem "overcommit", require: false
-  gem "standard", "~> 0.4.7"
+  gem "standard", "~> 0.6.0"
+  gem "guard-livereload", "~> 2.5", require: false
+  gem "vcr" # record http requests
+end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver", "~> 4.0.0.alpha6"
+  # gem 'webdrivers' # not needed if running test remotely (selenium grid)
+  gem "shoulda-matchers"
+  gem "rails-controller-testing"
+  gem "simplecov", require: false
+  gem "webmock" # intercept http requests
+  gem "email_spec"
+  gem "rspec-retry" # Unlike rspec, this doesn't need to be included in development group
+  gem "database_cleaner"
 end
 
 group :development do
   gem "listen", "~> 3.2.1"
   gem "web-console", ">= 4.0.0" # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem "spring" # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "annotate" # Annotate Rails classes with schema and optionally routes info
-  # gem 'rubocop'
-  # gem 'rubocop-rspec'
-  # gem 'rubocop-performance'
-  # gem 'rubocop-rails'
   gem "brakeman" # A static analysis security vulnerability scanner for Ruby on Rails applications https://brakemanscanner.org/
   gem "bundler-audit" # Patch-level verification for Bundler
   gem "reek", require: false
   gem "rails_best_practices", require: false
-end
-
-group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
-  # gem 'webdrivers' # not needed if running test remotely (selenium grid)
-  gem "shoulda-matchers"
-  gem "rails-controller-testing"
-  gem "simplecov", require: false
-  gem "vcr" # record http requests
-  gem "webmock" # intercept http requests
-  gem "email_spec"
-  gem "rspec-retry" # Unlike rspec, this doesn't need to be included in development group
+  gem "guard"
+  # gem "guard-livereload", github: 'petebytes/guard-livereload', require: false
+  # gem "guard-livereload", "~> 2.5", require: false
+  gem "guard-rspec", require: false # run tests when files are modified
+  gem "rack-livereload"
 end
