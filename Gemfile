@@ -6,7 +6,7 @@ ruby "2.7.1"
 # Default Gems
 gem "rails", "~> 6.0.3.3" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "pg", ">= 0.18", "< 2.0" # Use postgresql as the database for Active Record
-gem "puma", "~> 5.0.0" # Use Puma as the app server
+gem "puma", "~> 5.5.1" # Use Puma as the app server
 # But sass-rails 5 generates deprecation warnings. It is wrapper over sassc-rails, so change dependency to gem 'sassc-rails', '~> 2.0'
 gem "sassc-rails", "~> 2.0"
 gem "webpacker", "~> 5.2.1"
